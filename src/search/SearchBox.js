@@ -1,13 +1,26 @@
 import React, { useState } from 'react'
+import { Button, TextField } from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add'
 import { searchMovies } from '../shared/API'
+
+import styles from './SearchBox.module.css'
 
 const MovieList = (props) => {
   return (
     <div>
       <ul>
         {props.movies.map((movie) => (
-          <li>
+          <li className={styles.listItem} key={movie.id}>
             <b>{movie.title}</b> ({movie.release_date})
+            <Button
+              className="add_movie"
+              color="secondary"
+              onClick={(e) => {
+                e.preventDefault()
+                props.onMovieAdd(movie)
+              }}>
+              <AddIcon /> Add movie
+            </Button>
           </li>
         ))}
       </ul>
@@ -15,25 +28,33 @@ const MovieList = (props) => {
   )
 }
 
-const SearchBox = () => {
+const SearchBox = (props) => {
   const [term, setTerm] = useState('')
   const [movies, setMovies] = useState([])
+
+  const localMovieAdd = (movie) => {
+    setMovies([])
+    props.onMovieAdd(movie)
+  }
   return (
-    <div>
-      <input
-        placeholder="Search for a movie"
+    <div className={styles.main}>
+      <TextField
+        label="Search for a movie"
+        variant="outlined"
         value={term}
         onChange={(e) => {
           setTerm(e.target.value)
         }}
       />
-      <button
+      <Button
+        variant="contained"
+        color="primary"
         onClick={() =>
           searchMovies(term).then((res) => setMovies(res.data.results))
         }>
         Search
-      </button>
-      <MovieList movies={movies} />
+      </Button>
+      <MovieList movies={movies} onMovieAdd={localMovieAdd} />
     </div>
   )
 }
