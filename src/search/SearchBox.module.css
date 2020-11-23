@@ -5,17 +5,28 @@
 .box {
   display: flex;
   justify-content: center;
-} 
+}
+
+.list {
+  list-style: none;
+  width: 60%;
+  align-items: center;
+}
 
 .listItem {
-  height: 24px;
+  height: 72px;
   margin: 4px;
+  min-width: 600px;
+}
+
+.listItem img {
+  max-height: 72px;
 }
 
 .listItem .addMovie {
   display: none;
 }
 
-.listItem:hover > .addMovie {
+.listItem:hover .addMovie {
   display: inline-flex;
-}s
+}
