@@ -3,7 +3,7 @@ import { Button, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import { searchMovies } from '../shared/API'
 
-import styles from './SearchBox.module.css'
+import styles from './SearchBox'
 
 const MovieList = (props) => {
   return (
