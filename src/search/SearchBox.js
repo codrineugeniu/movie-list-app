@@ -16,7 +16,7 @@ const MovieList = (props) => {
               <img src={`http://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt='logo' />
               </div>
             <Button
-              className="Add Movie"
+              className={styles.addMovie}
               color="secondary"
               onClick={(e) => {
                 e.preventDefault();
@@ -42,30 +42,25 @@ const SearchBox = (props) => {
   };
 
   return (
-    <div>
-      <TextField
-        variant="outlined"
-        label="Search for a movie"
-        value={term}
-        onChange={(e) => {
-          setTerm(e.target.value);
-        }}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-          searchMovies(term).then((res) => setMovies(res.data.results))
-          }
-        }
-      }
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() =>
-          searchMovies(term).then((res) => setMovies(res.data.results))
-        }
-      >
-        Search
-      </Button>
+    <div className={styles.main}>
+      <div className={styles.box}>
+        <TextField
+          label="Search for a movie"
+          variant="outlined"
+          value={term}
+          onChange={(e) => {
+            setTerm(e.target.value)
+          }}
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() =>
+            searchMovies(term).then((res) => setMovies(res.data.results))
+          }>
+          Search
+        </Button>
+      </div>
       <MovieList movies={movies} onMovieAdd={localMovieAdd} />
     </div>
   );
