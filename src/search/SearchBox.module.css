@@ -1,0 +1,21 @@
+.main {
+  margin-top: 10px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+} 
+
+.listItem {
+  height: 24px;
+  margin: 4px;
+}
+
+.listItem .addMovie {
+  display: none;
+}
+
+.listItem:hover > .addMovie {
+  display: inline-flex;
+}s

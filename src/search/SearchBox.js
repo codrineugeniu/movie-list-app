@@ -13,7 +13,7 @@ const MovieList = (props) => {
           <li className={styles.listItem} key={movie.id}>
             <b>{movie.title}</b> ({movie.release_date})
             <Button
-              className="add_movie"
+              className={styles.addMovie}
               color="secondary"
               onClick={(e) => {
                 e.preventDefault()
@@ -38,22 +38,24 @@ const SearchBox = (props) => {
   }
   return (
     <div className={styles.main}>
-      <TextField
-        label="Search for a movie"
-        variant="outlined"
-        value={term}
-        onChange={(e) => {
-          setTerm(e.target.value)
-        }}
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() =>
-          searchMovies(term).then((res) => setMovies(res.data.results))
-        }>
-        Search
-      </Button>
+      <div className={styles.box}>
+        <TextField
+          label="Search for a movie"
+          variant="outlined"
+          value={term}
+          onChange={(e) => {
+            setTerm(e.target.value)
+          }}
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() =>
+            searchMovies(term).then((res) => setMovies(res.data.results))
+          }>
+          Search
+        </Button>
+      </div>
       <MovieList movies={movies} onMovieAdd={localMovieAdd} />
     </div>
   )
