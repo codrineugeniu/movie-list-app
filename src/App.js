@@ -11,7 +11,7 @@ class App extends React.Component {
   }
 
   handleAddMovie = (movie) => {
-    const movies = this.state.savedMovies.push(movie)
+    const movies = this.state.savedMovies.concat(movie)
     this.setState({
       savedMovies: movies
     })
