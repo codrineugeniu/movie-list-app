@@ -3,39 +3,44 @@ import { Button, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import { searchMovies } from '../shared/API'
 
-import styles from './SearchBox.module.css'
+import './SearchBox.css'
 
 const MovieList = (props) => {
   return (
-    <div>
-      <ul>
+    <div className='main listItem'>
+      <ul className='main'>
         {props.movies.map((movie) => (
-          <li className={styles.listItem} key={movie.id}>
+          <li className="listItem" key={movie.id}>
             <b>{movie.title}</b> ({movie.release_date})
+            <div>
+              <img src={`http://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt='logo' />
+              </div>
             <Button
               className={styles.addMovie}
               color="secondary"
               onClick={(e) => {
-                e.preventDefault()
-                props.onMovieAdd(movie)
-              }}>
-              <AddIcon /> Add movie
+                e.preventDefault();
+                props.onMovieAdd(movie);
+              }}
+            >
+              <AddIcon /> Add Movie
             </Button>
           </li>
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 const SearchBox = (props) => {
-  const [term, setTerm] = useState('')
-  const [movies, setMovies] = useState([])
+  const [term, setTerm] = useState('');
+  const [movies, setMovies] = useState([]);
 
   const localMovieAdd = (movie) => {
-    setMovies([])
-    props.onMovieAdd(movie)
-  }
+    setMovies([]);
+    props.onMovieAdd(movie);
+  };
+
   return (
     <div className={styles.main}>
       <div className={styles.box}>
@@ -58,7 +63,7 @@ const SearchBox = (props) => {
       </div>
       <MovieList movies={movies} onMovieAdd={localMovieAdd} />
     </div>
-  )
-}
+  );
+};
 
-export default SearchBox
+export default SearchBox;

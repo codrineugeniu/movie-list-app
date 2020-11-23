@@ -1,0 +1,22 @@
+.main{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.listItem .add_movie {
+    display: none;
+    font-size: 25px;
+
+}
+
+.listItem:hover > .add_movie{
+    display:flex;
+    color: red;
+}
+.listItem {
+    display: flex;
+    flex-direction: column;
+}
