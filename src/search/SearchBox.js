@@ -7,7 +7,7 @@ import './SearchBox.css'
 
 const MovieList = (props) => {
   return (
-    <div className='main listItem'>
+    <div className='main'>
       <ul className='main'>
         {props.movies.map((movie) => (
           <li className="listItem" key={movie.id}>
@@ -16,7 +16,7 @@ const MovieList = (props) => {
               <img src={`http://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt='logo' />
               </div>
             <Button
-              className={styles.addMovie}
+              className='addMovie'
               color="secondary"
               onClick={(e) => {
                 e.preventDefault();
@@ -42,8 +42,8 @@ const SearchBox = (props) => {
   };
 
   return (
-    <div className={styles.main}>
-      <div className={styles.box}>
+    <div className='main'>
+      <div className= 'box'>
         <TextField
           label="Search for a movie"
           variant="outlined"
