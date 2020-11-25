@@ -6,15 +6,37 @@ import SearchBox from './search/SearchBox'
 import SavedMovies from './savedmovies/SavedMovies'
 
 class App extends React.Component {
-  state = {
-    savedMovies: []
+  // state = {
+  //   movies: [],
+  // }
+
+  constructor(props) {
+    super(props)
+    const movies = JSON.parse(window.localStorage.getItem('saved-movies'))
+    if (movies && Array.isArray(movies)) {
+      this.state = {
+        movies,
+      }
+    } else {
+      this.state = {
+        movies: [],
+      }
+    }
   }
 
   handleAddMovie = (movie) => {
-    const movies = this.state.savedMovies
-    this.setState({
-      savedMovies: [...movies, movie ]
-    })
+    const movies = this.state.movies
+    this.setState(
+      {
+        movies: [...movies, movie],
+      },
+      () => {
+        window.localStorage.setItem(
+          'saved-movies',
+          JSON.stringify(this.state.movies),
+        )
+      },
+    )
   }
 
   render() {
@@ -22,7 +44,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <SearchBox onMovieAdd={this.handleAddMovie} />
-        <SavedMovies savedMovies={this.state.savedMovies} />
+        <SavedMovies savedMovies={this.state.movies} />
       </div>
     )
   }
