@@ -20,3 +20,6 @@
     display: flex;
     flex-direction: column;
 }
+.searchBox{
+    height: 0.2em;
+  }

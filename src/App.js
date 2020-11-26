@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 
-import Header from './shared/Header'
+import HeaderSearchAppBar from './shared/Header'
 import SearchBox from './search/SearchBox'
 import SavedMovies from './savedmovies/SavedMovies'
 
@@ -20,7 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <HeaderSearchAppBar />
         <SearchBox onMovieAdd={this.handleAddMovie} />
         <SavedMovies savedMovies={this.state.savedMovies} />
       </div>
