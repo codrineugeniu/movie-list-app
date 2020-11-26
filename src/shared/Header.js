@@ -12,12 +12,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import {useStyles} from './HeaderCss'
 
 
-export const SearchBox = (props) => {
-  const [term, setTerm] = useState('');
-  const [movies, setMovies] = useState([]);
-
-
-const HeaderSearchAppBar = (props) => {
+const HeaderSearchAppBar = () => {
   const classes = useStyles();
   const [term, setTerm] = useState('');
   
@@ -73,27 +68,3 @@ const HeaderSearchAppBar = (props) => {
   );
 }
  export default HeaderSearchAppBar
-
-// import React from 'react'
-// import {
-//   AppBar,
-//   Toolbar,
-//   IconButton,
-//   Typography,
-// } from '@material-ui/core'
-// import MenuIcon from '@material-ui/icons/Menu'
-
-// const Header = () => {
-//   return (
-//     <AppBar position="static">
-//       <Toolbar>
-//         <IconButton edge="start" color="inherit" aria-label="menu">
-//           <MenuIcon />
-//         </IconButton>
-//         <Typography variant="h6">movie🎥List</Typography>
-//       </Toolbar>
-//     </AppBar>
-//   )
-// }
-
-// export default Header
