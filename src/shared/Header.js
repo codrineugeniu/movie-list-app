@@ -57,7 +57,7 @@ const HeaderSearchAppBar = (props) => {
   const [term, setTerm] = useState('');
   const [movies, setMovies] = useState([]);
 
-  const localMovieAdd = (movie) => {
+  function localMovieAdd (movie) {
     setMovies([]);
     props.onMovieAdd(movie);
   };
