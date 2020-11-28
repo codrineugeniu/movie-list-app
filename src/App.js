@@ -37,7 +37,7 @@ constructor(props) {
     return (
       <div className="App">
         <HeaderSearchAppBar onMovieAdd = {this.handleAddMovie} />
-        <SavedMovies savedMovies={this.state.savedMovies} />
+        <SavedMovies savedMovies={this.state.movies} />
       </div>
     )
   }
