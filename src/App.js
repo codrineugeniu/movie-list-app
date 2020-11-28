@@ -1,8 +1,8 @@
 import React from 'react'
 import './App.css'
-
 import HeaderSearchAppBar from './shared/Header'
 import SavedMovies from './savedmovies/SavedMovies'
+
 class App extends React.Component {
 
 constructor(props) {
