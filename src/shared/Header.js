@@ -55,7 +55,7 @@ const HeaderSearchAppBar = (props) => {
   const classes = useStyles();
   const [term, setTerm] = useState('');
   const [movies, setMovies] = useState([])
-
+ 
   const localMovieAdd = (movie) => {
     setMovies([])
     props.onMovieAdd(movie)
