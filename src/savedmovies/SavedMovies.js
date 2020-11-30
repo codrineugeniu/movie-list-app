@@ -51,19 +51,19 @@ const useStyles = makeStyles((theme) => ({
 const MovieItem = (props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(2);
-  const [movieItem, setMovieItem] = React.useState(savedmovies);
+  // const [movieItem, setMovieItem] = React.useState(savedmovies);
 
   const movie = props.movie;
   const imgUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-  const savedmovies = JSON.parse(window.localStorage.getItem('saved-movies'));
+  // const savedmovies = JSON.parse(window.localStorage.getItem('saved-movies'));
 
   
 
-  const deleteItem = (movie) => {
-    const newMovieList = movieItem.filter((item) => item.id !== movie.key);
-    setMovieItem(newMovieList);
-  };
+  // const deleteItem = (movie) => {
+  //   const newMovieList = movieItem.filter((item) => item.id !== movie.key);
+  //   setMovieItem(newMovieList);
+  // };
 
   return (
     <Card className={classes.root}>
@@ -95,7 +95,7 @@ const MovieItem = (props) => {
         <Button>
           <TrashIcon key = {movie.id}
           value = {movie}
-          onClick = {deleteItem}
+          // onClick = {deleteItem}
           id = {movie.id}/>
         </Button>
       </span>
