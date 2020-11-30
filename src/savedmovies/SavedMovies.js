@@ -51,17 +51,17 @@ const useStyles = makeStyles((theme) => ({
 const MovieItem = (props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(2);
+  const [movieItem, setMovieItem] = React.useState(savedmovies);
 
   const movie = props.movie;
   const imgUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   const savedmovies = JSON.parse(window.localStorage.getItem('saved-movies'));
 
-  const [movieItem, setMovieItem] = React.useState(savedmovies);
+  
 
   const deleteItem = (movie) => {
     const newMovieList = movieItem.filter((item) => item.id !== movie.key);
-    console.log(newMovieList);
     setMovieItem(newMovieList);
   };
 
