@@ -4,17 +4,21 @@ import TrashIcon from '@material-ui/icons/Delete'
 import StarIcon from '@material-ui/icons/StarOutlined'
 // import HeaderSearchAppBar from '../shared/Header'
 
+
 const MovieItem = (props) => {
   const movie = props.movie
   const imgUrl = `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-  
-  // const [movieItem, setMovie] = React.useState();
 
-  // const deleteItem = () =>{
-  //   console.log(movieItem)
-  //   const newMovieList = movieItem.filter(item => item.id !== movie.key);
-  //   setMovie (newMovieList)
-  // }
+const savedmovies = JSON.parse(window.localStorage.getItem('saved-movies'))
+  
+const [movieItem, setMovieItem] = React.useState(savedmovies)
+  
+const deleteItem = (movie) =>{
+    
+    const newMovieList = movieItem.filter(item => item.id !== movie.key);
+    console.log(newMovieList)
+    setMovieItem (newMovieList)
+  }
   
   return (
     <div>
@@ -29,7 +33,7 @@ const MovieItem = (props) => {
         <Button>
           <TrashIcon key = {movie.id}
           value = {movie}
-          // onClick = {deleteItem}
+          onClick = {deleteItem}
           id = {movie.id}/>
         </Button>
       </span>
@@ -46,7 +50,8 @@ const MovieItem = (props) => {
 }
 
 const SavedMovies = (props) => {
-  return (
+  
+ return (
     <div>
       {props.savedMovies && props.savedMovies.length > 0 ? (
         <ul >
