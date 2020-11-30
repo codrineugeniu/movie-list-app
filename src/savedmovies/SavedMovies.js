@@ -2,10 +2,20 @@ import React from 'react'
 import { Button } from '@material-ui/core'
 import TrashIcon from '@material-ui/icons/Delete'
 import StarIcon from '@material-ui/icons/StarOutlined'
+// import HeaderSearchAppBar from '../shared/Header'
 
 const MovieItem = (props) => {
   const movie = props.movie
   const imgUrl = `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+  
+  // const [movieItem, setMovie] = React.useState();
+
+  // const deleteItem = () =>{
+  //   console.log(movieItem)
+  //   const newMovieList = movieItem.filter(item => item.id !== movie.key);
+  //   setMovie (newMovieList)
+  // }
+  
   return (
     <div>
     <li className="movie_item">
@@ -17,7 +27,10 @@ const MovieItem = (props) => {
       <span>{movie.vote_average}</span>
       <span>
         <Button>
-          <TrashIcon />
+          <TrashIcon key = {movie.id}
+          value = {movie}
+          // onClick = {deleteItem}
+          id = {movie.id}/>
         </Button>
       </span>
       <span>
