@@ -1,4 +1,4 @@
-#MovieList
+# Setting up MovieList
 
 1. Clone the repo then `npm install`
 2. Create an account at TheMovieDB: https://www.themoviedb.org/signup
