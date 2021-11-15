@@ -1,3 +1,11 @@
+#MovieList
+
+1. Clone the repo then `npm install`
+2. Create an account at TheMovieDB: https://www.themoviedb.org/signup
+3. Create an application on TheMovieDB
+4. Copy `.env.dev` to `.env.local` and Add your API KEY to `.env.local`
+5. Run `npm start`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
