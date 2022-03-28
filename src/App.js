@@ -1,15 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 
 import Header from "./shared/Header";
 import SearchBox from "./search/SearchBox";
 import SavedMovies from "./savedmovies/SavedMovies";
 
-class App extends React.Component {
-  // state = {
-  //   movies: [],
-  // }
-
+class App extends Component {
   constructor(props) {
     super(props);
     const movies = JSON.parse(window.localStorage.getItem("saved-movies"));

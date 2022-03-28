@@ -6,6 +6,16 @@ import StarIcon from "@material-ui/icons/StarOutlined";
 import styles from "./SavedMovies.module.css";
 
 const MovieItem = (props) => {
+  const movie = props.movie;
+  const imgUrl = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+  const [ratings, setRatings] = useState([
+    { id: 0, active: false },
+    { id: 1, active: false },
+    { id: 2, active: false },
+    { id: 3, active: false },
+    { id: 4, active: false },
+  ]);
+
   const handleMouseOver = (item) => {
     // console.log(item)
     // const index = ratings.findIndex((el) => el.id === item.id)
@@ -22,17 +32,9 @@ const MovieItem = (props) => {
     setRatings(items);
     console.log("items: ", items);
   };
-  const movie = props.movie;
-  const imgUrl = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
-  const [ratings, setRatings] = useState([
-    { id: 0, active: false },
-    { id: 1, active: false },
-    { id: 2, active: false },
-    { id: 3, active: false },
-    { id: 4, active: false },
-  ]);
+
   return (
-    <li className="movie_item">
+    <li className="movie_item" key={movie.id}>
       <span className="movie_poster">
         <img src={imgUrl} alt={movie.title} />
       </span>
