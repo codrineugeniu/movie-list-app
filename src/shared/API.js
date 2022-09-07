@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = ""
 
 export const searchMovies = (query) => {
   const URL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&language=en-US`;
