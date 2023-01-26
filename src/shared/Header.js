@@ -1,17 +1,11 @@
 import React from "react";
-import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import { Heading } from "@chakra-ui/react";
 
 const Header = () => {
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h4">movie🎥List</Typography>
-      </Toolbar>
-    </AppBar>
+    <header>
+      <Heading>movie🎥List</Heading>
+    </header>
   );
 };
 

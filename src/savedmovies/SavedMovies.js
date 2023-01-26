@@ -1,7 +1,14 @@
 import React, { useState } from "react";
-import { Button } from "@material-ui/core";
-import TrashIcon from "@material-ui/icons/Delete";
-import StarIcon from "@material-ui/icons/StarOutlined";
+import {
+  Box,
+  Card,
+  CardBody,
+  Flex,
+  Center,
+  Image,
+  IconButton,
+} from "@chakra-ui/react";
+import { DeleteIcon, StarIcon } from "@chakra-ui/icons";
 
 import styles from "./SavedMovies.module.css";
 
@@ -35,27 +42,49 @@ const MovieItem = (props) => {
 
   return (
     <li className="movie_item" key={movie.id}>
-      <span className="movie_poster">
-        <img src={imgUrl} alt={movie.title} />
-      </span>
-      <span className="movie_title">{movie.title}</span>
-      <span>{movie.release_date}</span>
-      <span>{movie.vote_average}</span>
-      <span>
-        <Button onClick={() => props.onMovieDelete(movie.id)}>
-          <TrashIcon />
-        </Button>
-      </span>
-      <span>
-        {ratings.map((item, index) => {
-          return (
-            <StarIcon
-              className={[styles.star, item.active && styles.active].join(" ")}
-              onMouseOver={() => handleMouseOver(item)}
-            />
-          );
-        })}
-      </span>
+      <Box w="80%">
+        <Card>
+          <CardBody>
+            <Flex>
+              <Center className="movie_poster">
+                <Image
+                  boxSize="200px"
+                  objectFit="contain"
+                  src={imgUrl}
+                  alt={movie.title}
+                />
+              </Center>
+              <Center pl="2" className="movie_title">
+                {movie.title}
+              </Center>
+              <Center pl="4">{movie.release_date}</Center>
+              <Center pl="4" mr="8">
+                {movie.vote_average}
+              </Center>
+              <Center mr="8">
+                <IconButton
+                  aria-label="menu"
+                  icon={<DeleteIcon />}
+                  onClick={() => props.onMovieDelete(movie.id)}
+                />
+              </Center>
+              <Center>
+                {ratings.map((item, index) => {
+                  return (
+                    <StarIcon
+                      className={[
+                        styles.star,
+                        item.active && styles.active,
+                      ].join(" ")}
+                      onMouseOver={() => handleMouseOver(item)}
+                    />
+                  );
+                })}
+              </Center>
+            </Flex>
+          </CardBody>
+        </Card>
+      </Box>
     </li>
   );
 };

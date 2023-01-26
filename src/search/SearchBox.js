@@ -1,14 +1,21 @@
 import React, { useState } from "react";
+
 import {
   Button,
-  TextField,
+  Box,
+  Card,
+  CardBody,
+  Container,
+  Flex,
+  Center,
+  Input,
+  Image,
   Radio,
-  FormControlLabel,
   RadioGroup,
-  Paper,
-  Grid,
-} from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+  Stack,
+  Spacer,
+} from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
 import { searchMovies, searchActors } from "../shared/API";
 
 import styles from "./SearchBox.module.css";
@@ -18,31 +25,38 @@ const MovieList = (props) => {
     <ul className={styles.list}>
       {props.movies.map((movie) => (
         <li className={styles.listItem} key={movie.id}>
-          <Paper>
-            <Grid container>
-              <Grid item md={2}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
-                  alt={movie.title}
-                />
-              </Grid>
-              <Grid md={8}>
-                <b>{movie.title}</b> ({movie.release_date})
-              </Grid>
-              <Grid md={2}>
-                <Button
-                  className={styles.addMovie}
-                  color="secondary"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    props.onMovieAdd(movie);
-                  }}
-                >
-                  <AddIcon /> Add movie
-                </Button>
-              </Grid>
-            </Grid>
-          </Paper>
+          <Container maxW="container.md" minW="container.md">
+            <Card>
+              <CardBody>
+                <Flex>
+                  <Center>
+                    <Image
+                      boxSize="150px"
+                      objectFit="contain"
+                      src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
+                      alt={movie.title}
+                    />
+                  </Center>
+                  <Box minW="md" alignItems="center" display="flex">
+                    <b>{movie.title}</b> ({movie.release_date})
+                  </Box>
+                  <Spacer />
+                  <Center w={300}>
+                    <Button
+                      className={styles.addMovie}
+                      color="secondary"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        props.onMovieAdd(movie);
+                      }}
+                    >
+                      <AddIcon /> Add movie
+                    </Button>
+                  </Center>
+                </Flex>
+              </CardBody>
+            </Card>
+          </Container>
         </li>
       ))}
     </ul>
@@ -61,17 +75,15 @@ const SearchBox = (props) => {
   return (
     <div className={styles.main}>
       <div className={styles.box}>
-        <TextField
-          label="Search for a movie"
-          variant="outlined"
+        <Input
+          placeholder="Search for a movie"
           value={term}
           onChange={(e) => {
             setTerm(e.target.value);
           }}
         />
         <Button
-          variant="contained"
-          color="primary"
+          paddingLeft={8}
           onClick={() =>
             // Won't implement this for now
             // searchMode === 'movies'
@@ -82,28 +94,12 @@ const SearchBox = (props) => {
         >
           Search
         </Button>
-        <RadioGroup
-          row
-          aria-label="position"
-          name="position"
-          defaultValue="top"
-        >
-          <FormControlLabel
-            value="top"
-            control={<Radio color="primary" />}
-            label="Movies"
-            labelPlacement="start"
-            checked={searchMode === "movies"}
-            onChange={() => setSearchMode("movies")}
-          />
-          <FormControlLabel
-            value="start"
-            control={<Radio color="primary" />}
-            label="Actors"
-            labelPlacement="start"
-            checked={searchMode === "actors"}
-            onChange={() => setSearchMode("actors")}
-          />
+
+        <RadioGroup onChange={setSearchMode} value={searchMode}>
+          <Stack direction="row" spacing={8} paddingLeft={8}>
+            <Radio value="movies">Search movies</Radio>
+            <Radio value="actors">Search actors</Radio>
+          </Stack>
         </RadioGroup>
       </div>
 
