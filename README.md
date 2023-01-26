@@ -6,6 +6,8 @@
 4. Add your API key in shared/API.js
 5. Run `npm start`
 
+This application now uses [Chakra UI](https://chakra-ui.com/) for the layout, take a look at the [components](https://chakra-ui.com/docs/components) to get started.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

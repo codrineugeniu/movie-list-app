@@ -1,11 +1,11 @@
 import React from "react";
-import { Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 
 const Header = () => {
   return (
-    <header>
+    <Box as="header" background="white">
       <Heading>movie🎥List</Heading>
-    </header>
+    </Box>
   );
 };
 

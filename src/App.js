@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+
+import { Box } from "@chakra-ui/react";
 import "./App.css";
 
 import Header from "./shared/Header";
@@ -29,11 +31,11 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <Box className="App" background="white">
       <Header />
       <SearchBox onMovieAdd={handleAddMovie} />
       <SavedMovies savedMovies={movies} onMovieDelete={handleDeleteMovie} />
-    </div>
+    </Box>
   );
 };
 
