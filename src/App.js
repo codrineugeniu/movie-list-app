@@ -31,7 +31,7 @@ const App = () => {
   };
 
   return (
-    <Box className="App" background="white">
+    <Box className="App" background="gray.50" h="calc(100vh)">
       <Header />
       <SearchBox onMovieAdd={handleAddMovie} />
       <SavedMovies savedMovies={movies} onMovieDelete={handleDeleteMovie} />

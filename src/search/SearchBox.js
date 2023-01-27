@@ -14,6 +14,7 @@ import {
   RadioGroup,
   Stack,
   Spacer,
+  Text,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { searchMovies, searchActors } from "../shared/API";
@@ -73,8 +74,16 @@ const SearchBox = (props) => {
     props.onMovieAdd(movie);
   };
   return (
-    <div className={styles.main}>
-      <div className={styles.box}>
+    <Box className={styles.main}>
+      <Center
+        className={styles.box}
+        maxWidth="50%"
+        mb="8"
+        boxShadow="base"
+        p="12"
+        rounded="md"
+        background="white"
+      >
         <Input
           placeholder="Search for a movie"
           value={term}
@@ -97,14 +106,18 @@ const SearchBox = (props) => {
 
         <RadioGroup onChange={setSearchMode} value={searchMode}>
           <Stack direction="row" spacing={8} paddingLeft={8}>
-            <Radio value="movies">Search movies</Radio>
-            <Radio value="actors">Search actors</Radio>
+            <Radio value="movies">
+              <Text>Search movies</Text>
+            </Radio>
+            <Radio value="actors">
+              <Text>Search actors</Text>
+            </Radio>
           </Stack>
         </RadioGroup>
-      </div>
+      </Center>
 
       <MovieList movies={movies} onMovieAdd={localMovieAdd} />
-    </div>
+    </Box>
   );
 };
 

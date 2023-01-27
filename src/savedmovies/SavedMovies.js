@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import {
+  Alert,
   Box,
   Card,
   CardBody,
   Flex,
+  Text,
   Center,
   Image,
   IconButton,
 } from "@chakra-ui/react";
-import { DeleteIcon, StarIcon } from "@chakra-ui/icons";
+import { DeleteIcon, StarIcon, InfoOutlineIcon } from "@chakra-ui/icons";
 
 import styles from "./SavedMovies.module.css";
 
@@ -91,7 +93,7 @@ const MovieItem = (props) => {
 
 const SavedMovies = (props) => {
   return (
-    <div>
+    <Box>
       {props.savedMovies && props.savedMovies.length > 0 ? (
         <ul>
           {props.savedMovies.map((movie) => (
@@ -103,9 +105,14 @@ const SavedMovies = (props) => {
           ))}
         </ul>
       ) : (
-        "No saved movies"
+        <Center>
+          <Alert status="info" boxShadow="base" p="8" rounded="md" width="30%">
+            <InfoOutlineIcon />
+            <Text ml="4">No saved movies</Text>
+          </Alert>
+        </Center>
       )}
-    </div>
+    </Box>
   );
 };
 
