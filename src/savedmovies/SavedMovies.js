@@ -44,7 +44,7 @@ const MovieItem = (props) => {
 
   return (
     <li className="movie_item" key={movie.id}>
-      <Box w="80%">
+      <Box>
         <Card>
           <CardBody>
             <Flex>
@@ -94,24 +94,24 @@ const MovieItem = (props) => {
 const SavedMovies = (props) => {
   return (
     <Box>
-      {props.savedMovies && props.savedMovies.length > 0 ? (
-        <ul>
-          {props.savedMovies.map((movie) => (
-            <MovieItem
-              movie={movie}
-              onMovieDelete={props.onMovieDelete}
-              key={movie.id}
-            />
-          ))}
-        </ul>
-      ) : (
-        <Center>
+      <Center>
+        {props.savedMovies && props.savedMovies.length > 0 ? (
+          <ul>
+            {props.savedMovies.map((movie) => (
+              <MovieItem
+                movie={movie}
+                onMovieDelete={props.onMovieDelete}
+                key={movie.id}
+              />
+            ))}
+          </ul>
+        ) : (
           <Alert status="info" boxShadow="base" p="8" rounded="md" width="30%">
             <InfoOutlineIcon />
             <Text ml="4">No saved movies</Text>
           </Alert>
-        </Center>
-      )}
+        )}
+      </Center>
     </Box>
   );
 };
