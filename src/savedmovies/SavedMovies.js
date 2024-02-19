@@ -74,6 +74,7 @@ const MovieItem = (props) => {
                 {ratings.map((item, index) => {
                   return (
                     <StarIcon
+                      key={index}
                       className={[
                         styles.star,
                         item.active && styles.active,

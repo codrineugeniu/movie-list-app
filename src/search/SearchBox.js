@@ -17,7 +17,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import { searchMovies, searchActors } from "../shared/API";
+import { searchMovies } from "../shared/API";
 
 import styles from "./SearchBox.module.css";
 

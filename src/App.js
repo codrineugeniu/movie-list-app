@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     const savedMovies = JSON.parse(window.localStorage.getItem("saved-movies"));
-    if (movies && Array.isArray(movies)) {
+    if (savedMovies && Array.isArray(savedMovies)) {
       setMovies(movies);
     }
   }, []);
